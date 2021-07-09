@@ -1,0 +1,20 @@
+<h1><%= @article.title %></h1>
+<h3><%= @article.short_description %></h3>
+<p><%= @article.body %></p>
+<p>Category: <%= @article.category %></p>
+<p>Region: <%= @article.region %></p>
+<p>Rating: <%= @article.rating %></p>
+<p>Average rating: <%= @article.average_rating %></p>
+
+<ul>
+  <li><%= link_to "Edit", edit_article_path(@article) %></li>
+  <li><%= link_to "Destroy", article_path(@article),
+                  method: :delete,
+                  data: { confirm: "Are you sure?" } %></li>
+</ul>
+
+<h2>Comments</h2>
+<%= render @article.comments %>
+
+<h2>Add a comment:</h2>
+<%= render 'comments/form' %>
