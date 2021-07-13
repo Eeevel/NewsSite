@@ -42,11 +42,17 @@
   <div>
     <%= form.label :status %><br>
     <%= form.select :status, %w[inactive active published archived], selected: 'inactive' %>
+    <% article.errors.full_messages_for(:status).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
   </div>
 
   <div>
     <%= form.label :important %><br>
     <%= form.select :important, [false, true], selected: false %>
+    <% article.errors.full_messages_for(:important).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
   </div>
 
   <div>
