@@ -45,6 +45,11 @@
   </div>
 
   <div>
+    <%= form.label :important %><br>
+    <%= form.select :important, [false, true], selected: false %>
+  </div>
+
+  <div>
     <%= form.submit %>
   </div>
 <% end %>
