@@ -19,12 +19,14 @@ ActiveRecord::Schema.define(version: 2021_07_09_201738) do
     t.string "title"
     t.text "short_description"
     t.text "body"
+    t.string "news_main_image"
     t.string "category"
     t.string "region"
     t.string "status"
     t.boolean "important"
-    t.float "rating"
+    t.integer "rating"
     t.float "average_rating"
+    t.string "redactor"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
