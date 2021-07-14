@@ -24,6 +24,14 @@
   </div>
 
   <div>
+    <%= form.label 'Upload image' %><br>
+    <%= form.file_field :news_main_image %><br>
+    <% article.errors.full_messages_for(:news_main_image).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
     <%= form.label :category %><br>
     <%= form.select :category, %w[people technology culture politics sport religion economics auto], selected: 'people' %>
     <% article.errors.full_messages_for(:category).each do |message| %>
