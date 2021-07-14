@@ -1,5 +1,6 @@
 <h1><%= @article.title %></h1>
 <h3><%= @article.short_description %></h3>
+<%= image_tag @article.news_main_image.url(:large) %>
 <p><%= @article.body %></p>
 <p>Category: <%= @article.category %></p>
 <p>Region: <%= @article.region %></p>
