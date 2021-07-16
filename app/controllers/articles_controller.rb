@@ -45,6 +45,6 @@ class ArticlesController < ApplicationController
   private
 
   def article_params
-    params.require(:article).permit(:title, :short_description, :body, :news_main_image, :category, :region, :status, :important)
+    params.require(:article).permit(:title, :short_description, :body, :all_tags, :news_main_image, :category, :region, :status, :important)
   end
 end
