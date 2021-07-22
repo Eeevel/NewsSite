@@ -3,6 +3,10 @@ Rails.application.routes.draw do
 
   resources :articles do
     resources :comments
+
+    collection do
+      get 'people'
+    end
   end
 
   resources :tags, only: [:show]

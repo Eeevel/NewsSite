@@ -2,7 +2,7 @@
 <h2>Important articles</h2>
 <%= render 'articles/article', articles: @articles_important %>
 
-<h2>People</h2>
+<h2><%= link_to 'People', people_articles_path %></h2>
 <%= render 'articles/article', articles: @articles_people %>
 
 <h2>Technology</h2>
