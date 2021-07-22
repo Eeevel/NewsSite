@@ -1,6 +1,16 @@
 class ArticlesController < ApplicationController
   def index
-    @articles = Article.all
+    @articles_last_updates = Article.order('updated_at DESC').limit(4)
+    @articles_important = Article.where(important: true).order('updated_at DESC').limit(4)
+
+    @articles_people = Article.where(category: 'people').order('updated_at DESC').limit(4)
+    @articles_technology = Article.where(category: 'technology').order('updated_at DESC').limit(4)
+    @articles_culture = Article.where(category: 'culture').order('updated_at DESC').limit(4)
+    @articles_politics = Article.where(category: 'politics').order('updated_at DESC').limit(4)
+    @articles_sport = Article.where(category: 'sport').order('updated_at DESC').limit(4)
+    @articles_religion = Article.where(category: 'religion').order('updated_at DESC').limit(4)
+    @articles_economics = Article.where(category: 'economics').order('updated_at DESC').limit(4)
+    @articles_auto = Article.where(category: 'auto').order('updated_at DESC').limit(4)
   end
 
   def show
@@ -45,6 +55,14 @@ class ArticlesController < ApplicationController
   private
 
   def article_params
-    params.require(:article).permit(:title, :short_description, :body, :all_tags, :news_main_image, :category, :region, :status, :important)
+    params.require(:article).permit(:title,
+                                    :short_description,
+                                    :body,
+                                    :all_tags,
+                                    :news_main_image,
+                                    :category,
+                                    :region,
+                                    :status,
+                                    :important)
   end
 end
