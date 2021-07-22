@@ -1,5 +1,30 @@
 <h1>News</h1>
+<h2>Important articles</h2>
+<%= render 'articles/article', articles: @articles_important %>
 
-<%= render 'articles/article', articles: @articles %>
+<h2>People</h2>
+<%= render 'articles/article', articles: @articles_people %>
 
-<%= link_to "New Article", new_article_path %>
+<h2>Technology</h2>
+<%= render 'articles/article', articles: @articles_technology %>
+
+<h2>Culture</h2>
+<%= render 'articles/article', articles: @articles_culture %>
+
+<h2>Politics</h2>
+<%= render 'articles/article', articles: @articles_politics %>
+
+<h2>Sport</h2>
+<%= render 'articles/article', articles: @articles_sport %>
+
+<h2>Religion</h2>
+<%= render 'articles/article', articles: @articles_religion %>
+
+<h2>Economics</h2>
+<%= render 'articles/article', articles: @articles_economics %>
+
+<h2>Auto</h2>
+<%= render 'articles/article', articles: @articles_auto %>
+
+<h2>Latest updates</h2>
+<%= render 'articles/article', articles: @articles_last_updates %>
