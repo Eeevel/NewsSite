@@ -1,16 +1,18 @@
 class ArticlesController < ApplicationController
   def index
-    @articles_last_updates = Article.order('updated_at DESC').limit(4)
-    @articles_important = Article.where(important: true).order('updated_at DESC').limit(4)
+    article = Article.order('updated_at DESC').limit(4)
 
-    @articles_people = Article.where(category: 'people').order('updated_at DESC').limit(4)
-    @articles_technology = Article.where(category: 'technology').order('updated_at DESC').limit(4)
-    @articles_culture = Article.where(category: 'culture').order('updated_at DESC').limit(4)
-    @articles_politics = Article.where(category: 'politics').order('updated_at DESC').limit(4)
-    @articles_sport = Article.where(category: 'sport').order('updated_at DESC').limit(4)
-    @articles_religion = Article.where(category: 'religion').order('updated_at DESC').limit(4)
-    @articles_economics = Article.where(category: 'economics').order('updated_at DESC').limit(4)
-    @articles_auto = Article.where(category: 'auto').order('updated_at DESC').limit(4)
+    @articles_last_updates = article
+    @articles_important = article.where(important: true)
+
+    @articles_people = article.where(category: 'people')
+    @articles_technology = article.where(category: 'technology')
+    @articles_culture = article.where(category: 'culture')
+    @articles_politics = article.where(category: 'politics')
+    @articles_sport = article.where(category: 'sport')
+    @articles_religion = article.where(category: 'religion')
+    @articles_economics = article.where(category: 'economics')
+    @articles_auto = article.where(category: 'auto')
   end
 
   def show
