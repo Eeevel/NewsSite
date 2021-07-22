@@ -1,0 +1,7 @@
+<% date_create = article.created_at.to_date %>
+<% date_update = article.updated_at.to_date %>
+<% if date_update > date_create %>
+  <p class="card-text">Updated at <%= date_update.strftime('%d %B, %Y') %></p>
+<% else %>
+  <p class="card-text">Created at <%= date_create.strftime('%d %B, %Y') %></p>
+<% end %>
