@@ -1,18 +1,6 @@
 class ArticlesController < ApplicationController
   def index
-    article = Article.order('updated_at DESC').limit(4)
-
-    @articles_last_updates = article
-    @articles_important = article.where(important: true)
-
-    @articles_people = article.where(category: 'people')
-    @articles_technology = article.where(category: 'technology')
-    @articles_culture = article.where(category: 'culture')
-    @articles_politics = article.where(category: 'politics')
-    @articles_sport = article.where(category: 'sport')
-    @articles_religion = article.where(category: 'religion')
-    @articles_economics = article.where(category: 'economics')
-    @articles_auto = article.where(category: 'auto')
+    @articles = Article.order('updated_at DESC').limit(4)
   end
 
   def show

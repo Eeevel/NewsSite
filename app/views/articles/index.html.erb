@@ -1,30 +1,12 @@
 <h1>News</h1>
 <h2>Important articles</h2>
-<%= render 'articles/article', articles: @articles_important %>
+<%= render 'articles/article', articles: @articles.where(important: true) %>
 
-<h2><%= link_to 'People', category_path(:people) %></h2>
-<%= render 'articles/article', articles: @articles_people %>
-
-<h2><%= link_to 'Technology', category_path(:technology) %></h2>
-<%= render 'articles/article', articles: @articles_technology %>
-
-<h2><%= link_to 'Culture', category_path(:culture) %></h2>
-<%= render 'articles/article', articles: @articles_culture %>
-
-<h2><%= link_to 'Politics', category_path(:politics) %></h2>
-<%= render 'articles/article', articles: @articles_politics %>
-
-<h2><%= link_to 'Sport', category_path(:sport) %></h2>
-<%= render 'articles/article', articles: @articles_sport %>
-
-<h2><%= link_to 'Religion', category_path(:religion) %></h2>
-<%= render 'articles/article', articles: @articles_religion %>
-
-<h2><%= link_to 'Economics', category_path(:economics) %></h2>
-<%= render 'articles/article', articles: @articles_economics %>
-
-<h2><%= link_to 'Auto', category_path(:auto) %></h2>
-<%= render 'articles/article', articles: @articles_auto %>
+<% categories = %i[people technology culture politics sport religion economics auto] %>
+<% categories.each do |category| %>
+  <h2><%= link_to category.capitalize, category_path(category) %></h2>
+  <%= render 'articles/article', articles: @articles.where(category: category) %>
+<% end %>
 
 <h2>Latest updates</h2>
-<%= render 'articles/article', articles: @articles_last_updates %>
+<%= render 'articles/article', articles: @articles %>
