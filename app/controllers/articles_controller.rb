@@ -19,10 +19,6 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
   end
 
-  def people
-    @articles_people = Article.order('updated_at DESC').where(category: 'people')
-  end
-
   def new
     @article = Article.new
   end
