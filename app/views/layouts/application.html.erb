@@ -16,10 +16,16 @@
         <a class="navbar-brand" href="<%= root_path %>">News</a>
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="<%= root_path %>">Home <span class="sr-only">(текущая)</span></a>
+            <%= link_to "New article", new_article_path, class: 'nav-link' %>
           </li>
         </ul>
-        <%= link_to "New Article", new_article_path, class: 'btn btn-outline-primary' %>
+
+        <% if user_signed_in? %>
+          <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: 'btn btn-outline-danger' %>
+        <% else %>
+          <%= link_to "Sign in", new_user_session_path, class: 'btn btn-outline-primary' %>
+          <%= link_to "Sign up", new_user_registration_path, class: 'btn btn-outline-primary' %>
+        <% end %>
       </nav>
     </div>
 
