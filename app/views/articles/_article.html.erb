@@ -1,0 +1,16 @@
+<div class="row row-cols-1 row-cols-md-4">
+  <% articles.each do |article| %>
+    <div class="col mb-4">
+      <div class="card border-dark h-100">
+        <%= image_tag article.news_main_image.url(:thumb), class: "card-img-top"%>
+        <div class="card-body">
+          <h4 class="card-title"><%= link_to article.title, article %></h4>
+
+          <%= render 'articles/date', article: article %>
+
+          <%= raw article.tags.map(&:name).map{ |t| link_to t, tag_path(t), class: "badge badge-primary" }.join(' ') %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

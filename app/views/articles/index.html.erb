@@ -1,0 +1,12 @@
+<h1>News</h1>
+<h2>Important articles</h2>
+<%= render 'articles/article', articles: @articles.where(important: true) %>
+
+<% categories = %i[people technology culture politics sport religion economics auto] %>
+<% categories.each do |category| %>
+  <h2><%= link_to category.capitalize, category_path(category) %></h2>
+  <%= render 'articles/article', articles: @articles.where(category: category) %>
+<% end %>
+
+<h2>Latest updates</h2>
+<%= render 'articles/article', articles: @articles %>

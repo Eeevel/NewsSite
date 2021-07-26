@@ -1,0 +1,22 @@
+<h1><%= @article.title %></h1>
+<%= render 'articles/date', article: @article %>
+
+<%= link_to "Edit", edit_article_path(@article), class: 'btn btn-outline-primary' %>
+<%= link_to "Destroy", article_path(@article),
+            method: :delete,
+            data: { confirm: "Are you sure?" },
+            class: 'btn btn-outline-danger' %>
+
+<h3><%= @article.short_description %></h3>
+<%= image_tag @article.news_main_image.url(:large) %>
+<%= @article.body %><br>
+<p>Category: <%= @article.category %></p>
+<p>Region: <%= @article.region %></p>
+<p>Rating: <%= @article.rating %></p>
+<p>Average rating: <%= @article.average_rating %></p>
+
+<h2>Comments</h2>
+<%= render 'comments/comment', article: @article %>
+
+<h2>Add a comment:</h2>
+<%= render 'comments/form', article: @article %>
