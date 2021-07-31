@@ -64,7 +64,8 @@ class ArticlesController < ApplicationController
         :category,
         :region,
         :status,
-        :important
+        :important,
+        :access_mask
       )
   end
 end
