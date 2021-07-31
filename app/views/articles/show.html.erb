@@ -1,8 +1,13 @@
-<%= link_to "Edit", edit_article_path(@article), class: 'btn btn-outline-primary' %>
-<%= link_to "Destroy", article_path(@article),
-            method: :delete,
-            data: { confirm: "Are you sure?" },
-            class: 'btn btn-outline-danger' %>
+<% if policy(@article).update? %>
+  <%= link_to "Edit", edit_article_path(@article), class: 'btn btn-outline-primary' %>
+<% end %>
+
+<% if policy(@article).destroy? %>
+  <%= link_to "Destroy", article_path(@article),
+              method: :delete,
+              data: { confirm: "Are you sure?" },
+              class: 'btn btn-outline-danger' %>
+<% end %>
 
 <% if @article.all_content? || user_signed_in? %>
   <h1><%= @article.title %></h1>
@@ -14,6 +19,14 @@
   <p>Region: <%= @article.region %></p>
   <p>Rating: <%= @article.rating %></p>
   <p>Average rating: <%= @article.average_rating %></p>
+
+  <h2>Comments</h2>
+  <%= render 'comments/comment', article: @article %>
+
+  <% if user_signed_in? %>
+    <h2>Add a comment:</h2>
+    <%= render 'comments/form', article: @article %>
+  <% end %>
 <% elsif @article.title_and_short_description? %>
   <h1><%= @article.title %></h1>
   <h3><%= @article.short_description %></h3>
@@ -27,9 +40,3 @@
   <p>For viewing, you must register:</p>
   <%= link_to "Sign up", new_user_registration_path, class: 'btn btn-outline-primary' %>
 <% end %>
-
-<h2>Comments</h2>
-<%= render 'comments/comment', article: @article %>
-
-<h2>Add a comment:</h2>
-<%= render 'comments/form', article: @article %>
