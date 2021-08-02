@@ -4,7 +4,7 @@ class ArticlePolicy < ApplicationPolicy
   end
 
   def show?
-    true
+    user&.admin? || user&.redactor? || user&.correspondent? || article.status == 'published'
   end
 
   def create?
@@ -12,11 +12,11 @@ class ArticlePolicy < ApplicationPolicy
   end
 
   def update?
-    user&.correspondent? && user == article.user
+    user&.redactor? || (user&.correspondent? && user == article.user && article.status != 'published')
   end
 
   def destroy?
-    user&.admin? || user&.redactor? || (user&.correspondent? && user == article.user)
+    user&.admin? || user&.redactor? || (user&.correspondent? && user == article.user && article.status != 'published')
   end
 
   private
