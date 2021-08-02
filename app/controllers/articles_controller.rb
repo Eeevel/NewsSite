@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   def index
-    @articles = Article.order('updated_at DESC').limit(4)
+    @articles = Article.order('updated_at DESC')
     authorize @articles
   end
 
@@ -65,7 +65,8 @@ class ArticlesController < ApplicationController
         :region,
         :status,
         :important,
-        :access_mask
+        :access_mask,
+        :feedback
       )
   end
 end
