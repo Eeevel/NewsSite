@@ -1,4 +1,7 @@
 <% if policy(@article).update? %>
+  <% if @article.active? && !@article.feedback.empty? %>
+    <p class="alert alert-danger"><%= @article.feedback %></p>
+  <% end %>
   <%= link_to "Edit", edit_article_path(@article), class: 'btn btn-outline-primary' %>
 <% end %>
 
