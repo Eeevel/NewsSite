@@ -1,12 +1,31 @@
 <h1>News</h1>
+
+<% if current_user.try(:correspondent?) || current_user.try(:redactor?) %>
+  <h2>Articles to check</h2>
+  <% articles_inactive = @articles.where(status: :inactive) %>
+  <% if articles_inactive.empty? %>
+    <h4>There are no articles to check</h4>
+  <% else %>
+    <%= render 'articles/article', articles: articles_inactive %>
+  <% end %>
+
+  <h2>Articles in progress</h2>
+  <% articles_active = @articles.where(status: :active) %>
+  <% if articles_active.empty? %>
+    <h4>There are no articles in progress</h4>
+  <% else %>
+    <%= render 'articles/article', articles: articles_active %>
+  <% end %>
+<% end %>
+
 <h2>Important articles</h2>
-<%= render 'articles/article', articles: @articles.where(important: true) %>
+<%= render 'articles/article', articles: @articles.where(important: true, status: :published).limit(4) %>
 
 <% categories = %i[people technology culture politics sport religion economics auto] %>
 <% categories.each do |category| %>
   <h2><%= link_to category.capitalize, category_path(category) %></h2>
-  <%= render 'articles/article', articles: @articles.where(category: category) %>
+  <%= render 'articles/article', articles: @articles.where(category: category, status: :published).limit(4) %>
 <% end %>
 
 <h2>Latest updates</h2>
-<%= render 'articles/article', articles: @articles %>
+<%= render 'articles/article', articles: @articles.where(status: :published).limit(4) %>
