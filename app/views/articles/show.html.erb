@@ -16,12 +16,17 @@
   <h1><%= @article.title %></h1>
   <%= render 'articles/date', article: @article %>
   <h3><%= @article.short_description %></h3>
-  <%= image_tag @article.news_main_image.url(:large) %>
+  <div class="text-center">
+    <%= image_tag @article.news_main_image.url(:large) %>
+  </div>
   <%= @article.body %><br>
-  <p>Category: <%= @article.category %></p>
   <p>Region: <%= @article.region %></p>
   <p>Rating: <%= @article.rating %></p>
   <p>Average rating: <%= @article.average_rating %></p>
+
+  <h2>See more:</h2>
+  <h3><%= raw @article.tags.map(&:name).map{ |t| link_to t, tag_path(t), class: "badge badge-primary" }.join(' ') %></h3>
+  <h3><%= link_to @article.category.capitalize, category_path(@article.category) %></h3>
 
   <h2>Comments</h2>
   <%= render 'comments/comment', article: @article %>
