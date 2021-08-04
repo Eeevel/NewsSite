@@ -1,7 +1,7 @@
 <ul class="list-group">
   <% article.comments.each do |comment| %>
     <li class="list-group-item">
-      <p><%= "#{comment.user.first_name} #{comment.user.last_name}" %></p>
+      <%= link_to comment.user.full_name, comment.user %>
       <p><%= comment.body %></p>
 
       <% if (current_user == comment.user) || (current_user.try(:admin?)) %>
