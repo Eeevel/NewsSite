@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   root 'articles#index'
 
   devise_for :users
-  resources :users, only: %i[index show edit update]
+  resources :users, only: %i[index show edit update] do
+    resources :activities, only: [:index]
+  end
 
   resources :articles do
     resources :comments
