@@ -32,6 +32,8 @@ gem 'carrierwave', '~> 2.0'
 gem 'mini_magick'
 
 gem 'devise'
+gem 'omniauth', '~> 1.6', '>= 1.6.1'
+gem 'omniauth-github', '~> 1.1', '>= 1.1.2'
 gem 'pundit'
 
 group :development, :test do
