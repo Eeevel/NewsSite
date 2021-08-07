@@ -28,6 +28,11 @@
   <h3><%= raw @article.tags.map(&:name).map{ |t| link_to t, tag_path(t), class: "badge badge-primary" }.join(' ') %></h3>
   <h3><%= link_to @article.category.capitalize, category_path(@article.category) %></h3>
 
+  <h2>Share on twitter:</h2>
+  <%= link_to "https://twitter.com/intent/tweet?text=#{ @article.title }&url=#{ request.url }" do %>
+    <i class="fab fa-twitter-square fa-4x twitter"></i>
+  <% end %>
+
   <h2>Comments</h2>
   <%= render 'comments/comment', article: @article %>
 
