@@ -2,16 +2,12 @@
   <div class="form-group">
     <%= form.label 'Rating' %>
     <%= form.select :number,
-                    options_for_select([0, 1, 2, 3, 4, 5],
-                                       selected: current_user.ratings.find_by(article: @article).try(:number)),
+                    options_for_select([0, 1, 2, 3, 4, 5]),
                     {},
-                    { class: "form-control",
-                      disabled: current_user.ratings.find_by(article: @article) } %>
+                    { class: "form-control"} %>
   </div>
 
-  <% unless current_user.ratings.find_by(article: @article) %>
-    <div>
-      <%= form.submit 'Rate', class: 'btn btn-outline-primary' %>
-    </div>
-  <% end %>
+  <div>
+    <%= form.submit 'Rate', class: 'btn btn-outline-primary' %>
+  </div>
 <% end %>
