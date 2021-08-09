@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_09_130538) do
+ActiveRecord::Schema.define(version: 2021_08_09_131023) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -82,6 +82,16 @@ ActiveRecord::Schema.define(version: 2021_08_09_130538) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+  create_table "ratings", force: :cascade do |t|
+    t.integer "number"
+    t.bigint "article_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["article_id"], name: "index_ratings_on_article_id"
+    t.index ["user_id"], name: "index_ratings_on_user_id"
+  end
+
   create_table "taggings", force: :cascade do |t|
     t.bigint "article_id", null: false
     t.bigint "tag_id", null: false
@@ -127,6 +137,8 @@ ActiveRecord::Schema.define(version: 2021_08_09_130538) do
   add_foreign_key "articles", "users"
   add_foreign_key "comments", "articles"
   add_foreign_key "comments", "users"
+  add_foreign_key "ratings", "articles"
+  add_foreign_key "ratings", "users"
   add_foreign_key "taggings", "articles"
   add_foreign_key "taggings", "tags"
 end
