@@ -21,8 +21,14 @@
   </div>
   <%= @article.body %><br>
   <p>Region: <%= @article.region %></p>
-  <p>Rating: <%= @article.rating %></p>
-  <p>Average rating: <%= @article.average_rating %></p>
+  <h3>Average rating: <%= Rating.where(article: @article).average(:number).to_f %></h3>
+  <% if user_signed_in? %>
+    <% if !current_user.ratings.find_by(article: @article) %>
+      <%= render 'ratings/form', article: @article %>
+    <% else %>
+      <%= render 'ratings/rating', article: @article %>
+    <% end %>
+  <% end %>
 
   <h2>See more:</h2>
   <h3><%= raw @article.tags.map(&:name).map{ |t| link_to t, tag_path(t), class: "badge badge-primary" }.join(' ') %></h3>
