@@ -1,6 +1,6 @@
 <%= form_with model: [ article, article.ratings.build ] do |form| %>
   <div class="form-group">
-    <%= form.label 'Rating' %>
+    <h3>Rating</h3>
     <%= form.select :number,
                     options_for_select([0, 1, 2, 3, 4, 5]),
                     {},
