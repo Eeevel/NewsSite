@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_09_131023) do
+ActiveRecord::Schema.define(version: 2021_08_09_152337) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,7 +62,6 @@ ActiveRecord::Schema.define(version: 2021_08_09_131023) do
     t.string "region"
     t.string "status", default: "inactive"
     t.boolean "important"
-    t.float "average_rating"
     t.string "redactor"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
