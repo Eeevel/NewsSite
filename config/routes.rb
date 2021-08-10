@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :articles do
     resources :comments
     resources :ratings
+    resources :viewings, only: %i[create]
   end
 
   resources :tags, only: [:show]
