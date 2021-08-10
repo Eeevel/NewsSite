@@ -37,7 +37,8 @@ class UsersController < ApplicationController
         :nickname,
         :address,
         :date_of_birth,
-        :avatar
+        :avatar,
+        :private
       )
   end
 end
