@@ -1,8 +1,13 @@
 <h1><%= @user.full_name %> comments</h1>
+<%= link_to 'Comment A-Z', sort: 'body' %>
+<%= link_to 'Comment Z-A', sort: 'body_desc' %>
+<%= link_to 'Latest', sort: 'updated_at' %>
+<%= link_to 'Newest', sort: 'updated_at_desc' %>
 <table class="table table-bordered table-hover">
   <thead>
     <tr>
       <th scope="col">Comment</th>
+      <th scope="col">Date</th>
       <th scope="col">Article link</th>
     </tr>
   </thead>
@@ -10,6 +15,7 @@
     <% @comments.each do |comment| %>
       <tr>
         <td><%= comment.body %></td>
+        <td><%= comment.updated_at.strftime('%d %B, %Y') %></td>
         <td><%= link_to comment.article.title, comment.article %></td>
       </tr>
     <% end %>
