@@ -1,0 +1,6 @@
+<%= form_with model: [ article, article.viewings.build ] do |form| %>
+  <h3>Mark viewed:</h3>
+  <div>
+    <%= form.submit 'Viewed', name: 'viewing[view]', class: 'btn btn-outline-primary' %>
+  </div>
+<% end %>
