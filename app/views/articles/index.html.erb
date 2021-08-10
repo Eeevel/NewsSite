@@ -27,5 +27,11 @@
   <%= render 'articles/article', articles: @articles.where(category: category, status: :published).limit(4) %>
 <% end %>
 
+<h2>Most read</h2>
+<%= render 'articles/article', articles: @articles.where(status: :published).sort_by { |article| article.viewings.count }.reverse.first(4) %>
+
+<h2>Most commented</h2>
+<%= render 'articles/article', articles: @articles.where(status: :published).sort_by { |article| article.comments.count }.reverse.first(4) %>
+
 <h2>Latest updates</h2>
 <%= render 'articles/article', articles: @articles.where(status: :published).limit(4) %>
