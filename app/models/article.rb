@@ -8,6 +8,7 @@ class Article < ApplicationRecord
   has_many :taggings, dependent: :destroy
   has_many :tags, through: :taggings
   has_many :ratings
+  has_many :viewings
 
   enum access_mask: %i[all_content title_and_short_description title nothing], _default: 'all_content'
 
