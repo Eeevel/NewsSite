@@ -16,4 +16,22 @@
   </tbody>
 </table>
 
-<h1>Просмотренные новости (в разработке)</h1>
+<% if current_user == @user || !@user.private %>
+  <h1>News viewed</h1>
+  <table class="table table-bordered table-hover">
+    <thead>
+    <tr>
+      <th scope="col">Date</th>
+      <th scope="col">Article link</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @viewings.each do |viewing| %>
+      <tr>
+        <td><%= viewing.created_at.strftime('%d %B, %Y') %></td>
+        <td><%= link_to viewing.article.title, viewing.article %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% end %>
