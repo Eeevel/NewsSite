@@ -30,6 +30,14 @@
     <% end %>
   <% end %>
 
+  <% if user_signed_in? %>
+    <% if !current_user.viewings.find_by(article: @article) %>
+      <%= render 'viewings/form', article: @article %>
+    <% else %>
+      <h3>Viewed</h3>
+    <% end %>
+  <% end %>
+
   <h2>See more:</h2>
   <h3><%= raw @article.tags.map(&:name).map{ |t| link_to t, tag_path(t), class: "badge badge-primary" }.join(' ') %></h3>
   <h3><%= link_to @article.category.capitalize, category_path(@article.category) %></h3>
