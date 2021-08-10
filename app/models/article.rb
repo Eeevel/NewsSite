@@ -24,7 +24,7 @@ class Article < ApplicationRecord
   has_rich_text :body
 
   def all_tags
-    self.tags.map(&:name).join(', ')
+    tags.map(&:name).join(', ')
   end
 
   def all_tags=(names)
