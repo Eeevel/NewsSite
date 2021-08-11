@@ -38,6 +38,7 @@ gem 'pundit'
 
 gem 'pagy', '~> 4.10', '>= 4.10.1'
 
+gem 'open-uri', '~> 0.1.0'
 gem 'rss', '~> 0.2.8'
 
 group :development, :test do
