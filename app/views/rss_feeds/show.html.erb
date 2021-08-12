@@ -1,0 +1,19 @@
+<% url = @rss_feed.link %>
+<% URI.open(url) do |rss| %>
+  <% feed = RSS::Parser.parse(rss, false) %>
+  <h1><%= feed.channel.title %></h1>
+  <div class="row row-cols-1 row-cols-md-2">
+    <% feed.items.each do |item| %>
+      <div class="col mb-4">
+        <div class="card border-dark h-100">
+          <div class="card-body">
+            <h4 class="card-title"><%= item.title %></h4>
+            <p class="card-text"><%= item.pubDate.strftime('%d %B, %Y at %H:%M') %></p>
+            <p class="card-text"><%= item.description %></p>
+            <p class="card-text"><%= link_to 'Read', item.link %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
