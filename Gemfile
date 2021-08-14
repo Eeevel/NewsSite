@@ -42,6 +42,7 @@ gem 'open-uri', '~> 0.1.0'
 gem 'rss', '~> 0.2.8'
 
 gem 'sidekiq', '~> 4.1', '>= 4.1.2'
+gem 'sidekiq-cron', '~> 0.4.2'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
