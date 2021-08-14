@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users, only: %i[index show edit update] do
     resources :activities, only: [:index]
+    resources :subscriptions, only: %i[index new create destroy]
   end
 
   resources :articles do
