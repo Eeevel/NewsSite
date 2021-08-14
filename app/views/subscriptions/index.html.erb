@@ -1,0 +1,34 @@
+<h1><%= @user.full_name %> subscriptions</h1>
+
+<% if @user == current_user %>
+  <p><%= link_to "New subscription", new_user_subscription_path, class: 'btn btn-outline-primary' %></p>
+<% end %>
+
+<table class="table table-bordered table-hover">
+  <thead>
+  <tr>
+    <th scope="col">Type</th>
+    <th scope="col">Name</th>
+    <th scope="col">Frequency</th>
+    <% if @user == current_user %>
+      <th scope="col">Unsubscribe</th>
+    <% end %>
+  </tr>
+  </thead>
+  <tbody>
+  <% @subscriptions.each do |subscription| %>
+    <tr>
+      <td><%= subscription.parameter %></td>
+      <td><%= subscription.name %></td>
+      <td><%= subscription.frequency %></td>
+      <% if policy(subscription).destroy? %>
+        <td><%= link_to 'Unsubscribe', user_subscription_path(@user, subscription),
+                        method: :delete,
+                        data: { confirm: "Are you sure?" },
+                        class: 'text-danger' %>
+        </td>
+      <% end %>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
