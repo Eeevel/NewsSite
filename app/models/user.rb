@@ -5,6 +5,7 @@ class User < ApplicationRecord
   has_many :comments
   has_many :ratings
   has_many :viewings
+  has_many :subscriptions
 
   validates :first_name, presence: true
   validates :last_name, presence: true
