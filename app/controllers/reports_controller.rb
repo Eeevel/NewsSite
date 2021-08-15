@@ -10,6 +10,8 @@ class ReportsController < ApplicationController
     authorize @report
 
     if @report.save
+      ReportMailer.with(report: @report).send_report_email.deliver_now
+
       flash[:notice] = 'Report sent to email'
       redirect_to root_path
     else
