@@ -1,0 +1,8 @@
+Hello, <%= @user.full_name %>!
+===============================================
+
+See our new articles:
+
+<% @articles.each do |article| %>
+  <%= article.title %>
+<% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_16_111621) do
+ActiveRecord::Schema.define(version: 2021_08_13_140210) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,22 +60,52 @@ ActiveRecord::Schema.define(version: 2021_07_16_111621) do
     t.string "news_main_image"
     t.string "category"
     t.string "region"
-    t.string "status"
+    t.string "status", default: "inactive"
     t.boolean "important"
-    t.integer "rating"
-    t.float "average_rating"
     t.string "redactor"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id", null: false
+    t.integer "access_mask"
+    t.text "feedback"
+    t.index ["user_id"], name: "index_articles_on_user_id"
   end
 
   create_table "comments", force: :cascade do |t|
-    t.string "commenter"
     t.text "body"
     t.bigint "article_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id", null: false
     t.index ["article_id"], name: "index_comments_on_article_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "ratings", force: :cascade do |t|
+    t.integer "number"
+    t.bigint "article_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["article_id"], name: "index_ratings_on_article_id"
+    t.index ["user_id"], name: "index_ratings_on_user_id"
+  end
+
+  create_table "rss_feeds", force: :cascade do |t|
+    t.string "title"
+    t.string "link"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "subscriptions", force: :cascade do |t|
+    t.integer "parameter"
+    t.string "name"
+    t.integer "frequency"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_subscriptions_on_user_id"
   end
 
   create_table "taggings", force: :cascade do |t|
@@ -93,9 +123,51 @@ ActiveRecord::Schema.define(version: 2021_07_16_111621) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string "unconfirmed_email"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "role"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "nickname"
+    t.string "address"
+    t.date "date_of_birth"
+    t.string "avatar"
+    t.boolean "private", default: true
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "viewings", force: :cascade do |t|
+    t.boolean "view"
+    t.bigint "article_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["article_id"], name: "index_viewings_on_article_id"
+    t.index ["user_id"], name: "index_viewings_on_user_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "articles", "users"
   add_foreign_key "comments", "articles"
+  add_foreign_key "comments", "users"
+  add_foreign_key "ratings", "articles"
+  add_foreign_key "ratings", "users"
+  add_foreign_key "subscriptions", "users"
   add_foreign_key "taggings", "articles"
   add_foreign_key "taggings", "tags"
+  add_foreign_key "viewings", "articles"
+  add_foreign_key "viewings", "users"
 end

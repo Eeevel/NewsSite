@@ -1,0 +1,6 @@
+<% rating = current_user.ratings.find_by(article: @article) %>
+<h3>Rating: <%= rating.number %></h3>
+<%= link_to "Destroy rating", [rating.article, rating],
+            method: :delete,
+            data: { confirm: "Are you sure?" },
+            class: 'btn btn-outline-danger' %>

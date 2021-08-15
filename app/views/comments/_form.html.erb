@@ -1,13 +1,10 @@
 <%= form_with model: [ article, article.comments.build ] do |form| %>
-  <p>
-    <%= form.label :commenter %><br>
-    <%= form.text_field :commenter %>
-  </p>
-  <p>
+  <div class="form-group">
     <%= form.label :body %><br>
-    <%= form.text_area :body %>
-  </p>
-  <p>
-    <%= form.submit %>
-  </p>
+    <%= form.text_area :body, class: "form-control" %>
+  </div>
+
+  <div>
+    <%= form.submit 'Create comment', class: 'btn btn-outline-primary' %>
+  </div>
 <% end %>

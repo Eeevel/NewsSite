@@ -1,0 +1,14 @@
+subscription_mailer_daily_job:
+  cron: "0 0 * * *"
+  class: "SubscriptionMailerDailyJob"
+  queue: default
+
+subscription_mailer_every_two_days_job:
+  cron: "0 0 */2 * *"
+  class: "SubscriptionMailerEveryTwoDaysJob"
+  queue: default
+
+subscription_mailer_weekly_job:
+  cron: "0 0 */7 * *"
+  class: "SubscriptionMailerWeeklyJob"
+  queue: default

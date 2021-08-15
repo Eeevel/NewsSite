@@ -1,0 +1,18 @@
+<%= form_with model: rss_feed do |form| %>
+  <div class="form-group">
+    <%= form.label :title %>
+    <%= form.text_field :title, class: "form-control" %>
+    <%= render 'rss_feeds/error', rss_feed: rss_feed, field: :title %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :link %>
+    <%= form.text_field :link, class: "form-control" %>
+    <%= render 'rss_feeds/error', rss_feed: rss_feed, field: :link %>
+  </div>
+
+  <div>
+    <%= form.submit 'Create', class: 'btn btn-outline-primary' %>
+    <%= link_to 'Back', :back, class: 'btn btn-outline-secondary' %>
+  </div>
+<% end %>

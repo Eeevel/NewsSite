@@ -1,0 +1,19 @@
+<h1>RSS Feeds</h1>
+
+<% if policy(@rss_feeds).create? %>
+  <p><%= link_to "New RSS Feed", new_rss_feed_path, class: 'btn btn-outline-primary' %></p>
+<% end %>
+
+<ul class="list-group">
+  <% @rss_feeds.each do |rss_feed| %>
+    <li class="list-group-item">
+      <%= link_to rss_feed.title, rss_feed %><br>
+      <% if policy(@rss_feeds).destroy? %>
+        <%= link_to 'Destroy', rss_feed_path(rss_feed),
+                    method: :delete,
+                    data: { confirm: "Are you sure?" },
+                    class: 'text-danger' %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>

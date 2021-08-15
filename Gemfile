@@ -31,6 +31,19 @@ gem 'bootsnap', '>= 1.4.4', require: false
 gem 'carrierwave', '~> 2.0'
 gem 'mini_magick'
 
+gem 'devise'
+gem 'omniauth', '~> 1.6', '>= 1.6.1'
+gem 'omniauth-github', '~> 1.1', '>= 1.1.2'
+gem 'pundit'
+
+gem 'pagy', '~> 4.10', '>= 4.10.1'
+
+gem 'open-uri', '~> 0.1.0'
+gem 'rss', '~> 0.2.8'
+
+gem 'sidekiq', '~> 4.1', '>= 4.1.2'
+gem 'sidekiq-cron', '~> 0.4.2'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

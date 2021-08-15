@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>NewsSite</title>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  <style>
+      .article {
+          outline: 1px solid #000;
+      }
+  </style>
+</head>
+<body>
+<h1>Hello, <%= @user.full_name %>!</h1>
+<h2>See our new articles:</h2>
+<% @articles.each do |article| %>
+  <div class="article">
+    <%= image_tag article.news_main_image.url(:thumb) %>
+    <h4><%= link_to article.title, article_url(article) %></h4>
+    <%= render 'articles/date', article: article %>
+  </div>
+<% end %>
+</body>
+</html>
