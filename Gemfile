@@ -44,6 +44,8 @@ gem 'rss', '~> 0.2.8'
 gem 'sidekiq', '~> 4.1', '>= 4.1.2'
 gem 'sidekiq-cron', '~> 0.4.2'
 
+gem 'chartkick', '~> 4.0', '>= 4.0.5'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
