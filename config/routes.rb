@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resources :comments
     resources :ratings
     resources :viewings, only: %i[create]
+    resources :charts, only: %i[index]
   end
 
   resources :tags, only: [:show]
