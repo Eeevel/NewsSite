@@ -45,6 +45,7 @@ gem 'sidekiq', '~> 4.1', '>= 4.1.2'
 gem 'sidekiq-cron', '~> 0.4.2'
 
 gem 'chartkick', '~> 4.0', '>= 4.0.5'
+gem 'groupdate', '~> 5.2', '>= 5.2.2'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
