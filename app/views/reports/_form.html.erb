@@ -1,0 +1,18 @@
+<%= form_with model: report do |form| %>
+  <div class="form-group">
+    <%= form.label :start_date %>
+    <%= form.date_field :start_date, class: "form-control" %>
+    <%= render 'reports/error', report: report, field: :start_date %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :end_date %>
+    <%= form.date_field :end_date, class: "form-control" %>
+    <%= render 'reports/error', report: report, field: :end_date %>
+  </div>
+
+  <div>
+    <%= form.submit 'Create report', class: 'btn btn-outline-primary' %>
+    <%= link_to 'Back', :back, class: 'btn btn-outline-secondary' %>
+  </div>
+<% end %>
