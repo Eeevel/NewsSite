@@ -6,6 +6,7 @@ class ReportsController < ApplicationController
 
   def create
     @report = Report.new(report_params)
+    @report.user = current_user
     authorize @report
 
     if @report.save
