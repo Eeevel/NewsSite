@@ -32,6 +32,11 @@
           <li class="nav-item active">
             <%= link_to 'RSS Feeds', rss_feeds_path, class: 'nav-link' %>
           </li>
+          <% if policy(Report).create? %>
+            <li class="nav-item active">
+              <%= link_to 'Reports', new_report_path, class: 'nav-link' %>
+            </li>
+          <% end %>
         </ul>
 
         <% if user_signed_in? %>
