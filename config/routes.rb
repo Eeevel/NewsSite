@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'articles#index'
 
-  devise_for :users
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   resources :users, only: %i[index show edit update] do
     resources :activities, only: [:index]
     resources :subscriptions, only: %i[index new create destroy]

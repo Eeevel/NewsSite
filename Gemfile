@@ -32,8 +32,8 @@ gem 'carrierwave', '~> 2.0'
 gem 'mini_magick'
 
 gem 'devise'
-gem 'omniauth', '~> 1.6', '>= 1.6.1'
-gem 'omniauth-github', '~> 1.1', '>= 1.1.2'
+gem 'omniauth-github', '~> 2.0.0', '>= 2.0.0'
+gem 'omniauth-rails_csrf_protection', '~> 1.0.0'
 gem 'pundit'
 
 gem 'pagy', '~> 4.10', '>= 4.10.1'
