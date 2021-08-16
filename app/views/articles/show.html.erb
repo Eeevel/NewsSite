@@ -12,6 +12,10 @@
               class: 'btn btn-outline-danger' %>
 <% end %>
 
+<% if policy(:chart).index? %>
+  <%= link_to 'Charts', article_charts_path(@article), class: 'btn btn-outline-primary' %>
+<% end %>
+
 <% if @article.all_content? || user_signed_in? %>
   <h1><%= @article.title %></h1>
   <%= render 'articles/date', article: @article %>

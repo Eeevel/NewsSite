@@ -1,0 +1,25 @@
+Hello, <%= @user.full_name %>!
+===============================================
+
+See article statistics:
+
+<% @articles.each do |article| %>
+  <%= article.title %>
+  Date of publication: <%= article.created_at.strftime('%d %B, %Y') %>
+  Date of last edit: <%= article.updated_at.strftime('%d %B, %Y') %>
+  Number of views: <%= article.viewings.count %>
+  Number of comments: <%= article.comments.count %>
+  Average rating: <%= Rating.where(article: article).average(:number).to_f %>
+  Top 5 countries that viewed the article:
+  <% Viewing
+         .where(article: article)
+         .map { |view| view.user.address }
+         .inject(Hash.new(0)) {|hash,word| hash[word] += 1; hash }
+         .sort_by { |key, value| value }
+         .reverse
+         .first(5)
+         .each do |value| %>
+    <%= value.first %>
+  <% end %>
+
+<% end %>

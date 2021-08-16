@@ -1,0 +1,8 @@
+<h1>Charts</h1>
+<h2>Change in average article rating over time:</h2>
+<%= line_chart @article.ratings.group_by_day(:created_at).average(:number) %>
+<h2>Percentage of countries of users who viewed the article:</h2>
+<%= pie_chart @article
+                  .viewings
+                  .map { |view| view.user.address }
+                  .inject(Hash.new(0)) {|hash,word| hash[word] += 1; hash } %>
