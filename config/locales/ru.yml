@@ -1,0 +1,27 @@
+ru:
+  articles:
+    index:
+      title: 'Новости'
+      articles_to_check: 'Новости для проверки'
+      no_articles_to_check: 'Нет новостей для проверки'
+      articles_in_progress: 'Новости в работе'
+      no_articles_in_progress: 'Нет новостей в работе'
+      important_articles: 'Важные новости'
+      most_read: 'Наиболее читаемые'
+      most_commented: 'Наиболее комментируемые'
+      latest_updates: 'Последние обновления'
+      category:
+        people: 'Люди'
+        technology: 'Технологии'
+        culture: 'Культура'
+        politics: 'Политика'
+        sport: 'Спорт'
+        religion: 'Религия'
+        economics: 'Экономика'
+        auto: 'Авто'
+  layouts:
+    application:
+      new_article: 'Новая статья'
+      profile: 'Профиль'
+      users: 'Пользователи'
+      rss_feeds: 'RSS Новости'
