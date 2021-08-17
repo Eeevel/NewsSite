@@ -30,4 +30,29 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  articles:
+    index:
+      title: 'News'
+      articles_to_check: 'Articles to check'
+      no_articles_to_check: 'There are no articles to check'
+      articles_in_progress: 'Articles in progress'
+      no_articles_in_progress: 'There are no articles in progress'
+      important_articles: 'Important articles'
+      most_read: 'Most read'
+      most_commented: 'Most commented'
+      latest_updates: 'Latest updates'
+      category:
+        people: 'People'
+        technology: 'Technology'
+        culture: 'Culture'
+        politics: 'Politics'
+        sport: 'Sport'
+        religion: 'Religion'
+        economics: 'Economics'
+        auto: 'Auto'
+  layouts:
+    application:
+      new_article: 'New article'
+      profile: 'Profile'
+      users: 'Users'
+      rss_feeds: 'RSS Feeds'
