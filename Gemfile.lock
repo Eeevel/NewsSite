@@ -263,6 +263,8 @@ GEM
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
     semantic_range (3.0.0)
+    shoulda-matchers (5.0.0)
+      activesupport (>= 5.2.0)
     sidekiq (4.1.2)
       concurrent-ruby (~> 1.0)
       connection_pool (~> 2.2, >= 2.2.0)
@@ -337,6 +339,7 @@ DEPENDENCIES
   rss (~> 0.2.8)
   sass-rails (>= 6)
   selenium-webdriver
+  shoulda-matchers (~> 5.0)
   sidekiq (~> 4.1, >= 4.1.2)
   sidekiq-cron (~> 0.4.2)
   turbolinks (~> 5)
