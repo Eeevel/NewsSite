@@ -1,0 +1,7 @@
+<h1>Search for: <%= @search_text %></h1>
+
+<% if @articles.empty? %>
+  <h2>There are no news for this request</h2>
+<% else %>
+  <%= render 'search/search_articles', articles: @articles %>
+<% end %>
