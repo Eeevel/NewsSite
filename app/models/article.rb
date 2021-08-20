@@ -1,4 +1,14 @@
 class Article < ApplicationRecord
+  include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
+
+  settings do
+    mappings dynamic: false do
+      indexes :title, type: :text, analyzer: :english
+      indexes :short_description, type: :text, analyzer: :english
+    end
+  end
+
   include Status
   include Category
 
@@ -31,5 +41,17 @@ class Article < ApplicationRecord
     self.tags = names.split(',').map do |name|
       Tag.where(name: name.strip).first_or_create!
     end
+  end
+
+  def self.search_articles(query)
+    search(
+      query: {
+        multi_match: {
+          query: query,
+          fuzziness: 'AUTO',
+          fields: %w[title short_description]
+        }
+      }
+    )
   end
 end
