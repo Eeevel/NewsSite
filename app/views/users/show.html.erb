@@ -1,7 +1,8 @@
+<% presenter = UserPresenter.new(@user) %>
 <% if user_signed_in? %>
   <div class="row">
     <div class="col">
-      <%= image_tag @user.avatar.url(:large) %>
+      <%= image_tag presenter.large_avatar %>
     </div>
 
     <div class="col">
@@ -9,7 +10,7 @@
       <h2><%= @user.nickname %></h2>
       <p>Role: <%= @user.role %></p>
       <p>Address: <%= @user.address %></p>
-      <p>Date of Birth: <%= @user.date_of_birth.strftime('%d %B, %Y') %></p>
+      <p>Date of Birth: <%= presenter.birth_date %></p>
 
       <%= link_to 'Activities', user_activities_path(@user), class: 'btn btn-outline-primary' %>
 
@@ -23,7 +24,7 @@
 <% else %>
   <div class="row">
     <div class="col">
-      <%= image_tag @user.avatar.url(:large) %>
+      <%= image_tag presenter.large_avatar %>
     </div>
 
     <div class="col">
