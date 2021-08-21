@@ -1,19 +1,13 @@
 class RatingsController < ApplicationController
   def create
     @article = Article.find(params[:article_id])
-    @rating = Rating.new(rating_params)
-    @rating.user = current_user
-    @rating.article = @article
-    authorize @rating
-    @rating.save
+    CreateRatingsService.call(rating_params, current_user, @article)
     redirect_to article_path(@article)
   end
 
   def destroy
     @article = Article.find(params[:article_id])
-    @rating = @article.ratings.find(params[:id])
-    authorize @rating
-    @rating.destroy
+    DestroyRatingsService.call(params[:id], current_user, @article)
     redirect_to article_path(@article)
   end
 

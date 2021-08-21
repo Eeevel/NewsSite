@@ -1,8 +1,9 @@
+<% presenter = ArticlePresenter.new(@articles) %>
 <h1><%= t('articles.index.title') %></h1>
 
 <% if current_user.try(:correspondent?) || current_user.try(:redactor?) %>
   <h2><%= t('articles.index.articles_to_check') %></h2>
-  <% articles_inactive = @articles.where(status: :inactive) %>
+  <% articles_inactive = presenter.inactive %>
   <% if articles_inactive.empty? %>
     <h4><%= t('articles.index.no_articles_to_check') %></h4>
   <% else %>
@@ -10,7 +11,7 @@
   <% end %>
 
   <h2><%= t('articles.index.articles_in_progress') %></h2>
-  <% articles_active = @articles.where(status: :active) %>
+  <% articles_active = presenter.active %>
   <% if articles_active.empty? %>
     <h4><%= t('articles.index.no_articles_in_progress') %></h4>
   <% else %>
@@ -19,19 +20,19 @@
 <% end %>
 
 <h2><%= t('articles.index.important_articles') %></h2>
-<%= render 'articles/article', articles: @articles.where(important: true, status: :published).limit(4) %>
+<%= render 'articles/article', articles: presenter.important %>
 
 <% categories = %i[people technology culture politics sport religion economics auto] %>
 <% categories.each do |category| %>
   <h2><%= link_to t("articles.index.category.#{category}"), category_path(category) %></h2>
-  <%= render 'articles/article', articles: @articles.where(category: category, status: :published).limit(4) %>
+  <%= render 'articles/article', articles: presenter.category(category) %>
 <% end %>
 
 <h2><%= t('articles.index.most_read') %></h2>
-<%= render 'articles/article', articles: @articles.where(status: :published).sort_by { |article| article.viewings.count }.reverse.first(4) %>
+<%= render 'articles/article', articles: presenter.most_read %>
 
 <h2><%= t('articles.index.most_commented') %></h2>
-<%= render 'articles/article', articles: @articles.where(status: :published).sort_by { |article| article.comments.count }.reverse.first(4) %>
+<%= render 'articles/article', articles: presenter.most_commented %>
 
 <h2><%= t('articles.index.latest_updates') %></h2>
-<%= render 'articles/article', articles: @articles.where(status: :published).limit(4) %>
+<%= render 'articles/article', articles: presenter.latest_updates %>
