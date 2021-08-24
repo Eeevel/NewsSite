@@ -71,6 +71,7 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'shoulda-matchers', '~> 5.0'
+  gem 'simplecov', '~> 0.21', '>= 0.21.2'
   gem 'webdrivers'
 end
 
