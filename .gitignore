@@ -38,3 +38,4 @@ yarn-debug.log*
 public/uploads
 config/initializers/devise.rb
 config/initializers/elasticsearch.rb
+coverage
