@@ -20,7 +20,7 @@ RSpec.describe User, type: :model do
   end
 
   describe '#full_name' do
-    let(:user) { User.new(first_name: 'First', last_name: 'Last') }
+    let(:user) { build(:user, first_name: 'First', last_name: 'Last') }
 
     it 'should return a full name' do
       expect(user.full_name).to eq('First Last')
