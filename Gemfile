@@ -53,6 +53,7 @@ gem 'elasticsearch-rails', '~> 7.2', '>= 7.2.0'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'factory_bot', '~> 6.2', '>= 6.2.0'
   gem 'rails-controller-testing', '~> 1.0', '>= 1.0.5'
   gem 'rspec-rails', '~> 5.0', '>= 5.0.2'
 end
@@ -71,6 +72,7 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'shoulda-matchers', '~> 5.0'
+  gem 'simplecov', '~> 0.21', '>= 0.21.2'
   gem 'webdrivers'
 end
 

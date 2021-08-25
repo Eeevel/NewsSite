@@ -2,20 +2,7 @@ require 'rails_helper'
 
 RSpec.feature 'Create the article', type: :feature do
   before :each do
-    User.create do |u|
-      u.email = 'test123@test123'
-      u.password = '123456'
-      u.first_name = 'Test'
-      u.last_name = 'Test'
-      u.nickname = 'Test'
-      u.address = 'Belarus'
-      u.date_of_birth = '1970-01-01'
-      u.avatar = File.open('app/assets/images/default_avatar.jpg')
-      u.role = 'correspondent'
-      u.uid = ''
-      u.provider = ''
-      u.skip_confirmation!
-    end
+    create(:user, role: 'correspondent')
     visit '/users/sign_in'
     fill_in 'Email', with: 'test123@test123'
     fill_in 'Password', with: '123456'
