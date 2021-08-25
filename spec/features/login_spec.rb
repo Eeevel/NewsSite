@@ -2,20 +2,7 @@ require 'rails_helper'
 
 RSpec.feature 'Log in', type: :feature do
   before :each do
-    User.create do |u|
-      u.email = 'test123@test123'
-      u.password = '123456'
-      u.first_name = 'Test'
-      u.last_name = 'Test'
-      u.nickname = 'Test'
-      u.address = 'Belarus'
-      u.date_of_birth = '1970-01-01'
-      u.avatar = File.open('app/assets/images/default_avatar.jpg')
-      u.role = 'correspondent'
-      u.uid = ''
-      u.provider = ''
-      u.skip_confirmation!
-    end
+    create(:user, role: 'correspondent')
   end
 
   describe 'user log in' do
