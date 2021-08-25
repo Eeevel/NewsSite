@@ -1,21 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
-  let(:user) do
-    User.create do |u|
-      u.email = 'test@test'
-      u.password = '123456'
-      u.first_name = 'Test'
-      u.last_name = 'Test'
-      u.nickname = 'Test'
-      u.address = 'Belarus'
-      u.date_of_birth = '1970-01-01'
-      u.avatar = File.open('app/assets/images/default_avatar.jpg')
-      u.uid = ''
-      u.provider = ''
-      u.skip_confirmation!
-    end
-  end
+  let(:user) { create(:user) }
 
   let(:user_params) do
     {
