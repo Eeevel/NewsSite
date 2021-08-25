@@ -113,6 +113,8 @@ GEM
     erubi (1.10.0)
     et-orbi (1.2.4)
       tzinfo
+    factory_bot (6.2.0)
+      activesupport (>= 5.0.0)
     faraday (1.6.0)
       faraday-em_http (~> 1.0)
       faraday-em_synchrony (~> 1.0)
@@ -349,6 +351,7 @@ DEPENDENCIES
   devise
   elasticsearch-model (~> 7.2, >= 7.2.0)
   elasticsearch-rails (~> 7.2, >= 7.2.0)
+  factory_bot (~> 6.2, >= 6.2.0)
   groupdate (~> 5.2, >= 5.2.2)
   jbuilder (~> 2.7)
   mini_magick
