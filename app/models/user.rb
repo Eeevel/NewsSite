@@ -17,14 +17,13 @@ class User < ApplicationRecord
 
   mount_uploader :avatar, AvatarUploader
 
-  def full_name
-    "#{first_name} #{last_name}"
-  end
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :confirmable, :registerable,
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: [:github]
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 
   def self.from_omniauth(access_token)
     user = User.where(email: access_token.info.email).first
