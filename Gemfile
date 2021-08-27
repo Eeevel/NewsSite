@@ -50,6 +50,8 @@ gem 'groupdate', '~> 5.2', '>= 5.2.2'
 gem 'elasticsearch-model', '~> 7.2', '>= 7.2.0'
 gem 'elasticsearch-rails', '~> 7.2', '>= 7.2.0'
 
+gem 'wicked_pdf', '~> 2.1', '>= 2.1.0'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
