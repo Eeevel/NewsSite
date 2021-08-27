@@ -19,6 +19,7 @@
 <% if @article.all_content? || user_signed_in? %>
   <h1><%= @article.title %></h1>
   <%= render 'articles/date', article: @article %>
+  <p>Author: <%= @article.user.full_name %></p>
   <h3><%= @article.short_description %></h3>
   <div class="text-center">
     <%= image_tag @article.news_main_image.url(:large) %>

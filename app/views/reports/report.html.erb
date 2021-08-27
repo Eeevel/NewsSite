@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>NewsSite</title>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  <style>
+      .article {
+          outline: 1px solid #000;
+      }
+  </style>
+</head>
+<body>
+<% @articles.each do |article| %>
+  <div class="article">
+    <%= link_to article.title, article_url(locale, article) %>
+    <p>Date of publication: <%= article.created_at.strftime('%d %B, %Y') %></p>
+    <p>Date of last edit: <%= article.updated_at.strftime('%d %B, %Y') %></p>
+    <p>Number of views: <%= article.viewings.count %></p>
+    <p>Number of comments: <%= article.comments.count %></p>
+    <p>Average rating: <%= Rating.where(article: article).average(:number).to_f %></p>
+    <p>Top 5 countries that viewed the article:</p>
+    <% Viewing
+           .where(article: article)
+           .map { |view| view.user.address }
+           .inject(Hash.new(0)) {|hash,word| hash[word] += 1; hash }
+           .sort_by { |key, value| value }
+           .reverse
+           .first(5)
+           .each do |value| %>
+      <%= value.first %><br>
+    <% end %>
+  </div>
+<% end %>
+</body>
+</html>

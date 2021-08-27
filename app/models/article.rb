@@ -1,24 +1,16 @@
 class Article < ApplicationRecord
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
-
-  settings do
-    mappings dynamic: false do
-      indexes :title, type: :text, analyzer: :english
-      indexes :short_description, type: :text, analyzer: :english
-    end
-  end
-
   include Status
   include Category
 
   belongs_to :user
-
   has_many :comments, dependent: :destroy
   has_many :taggings, dependent: :destroy
   has_many :tags, through: :taggings
   has_many :ratings
   has_many :viewings
+  has_rich_text :body
 
   enum access_mask: %i[all_content title_and_short_description title nothing], _default: 'all_content'
 
@@ -31,7 +23,12 @@ class Article < ApplicationRecord
 
   mount_uploader :news_main_image, NewsMainImageUploader
 
-  has_rich_text :body
+  settings do
+    mappings dynamic: false do
+      indexes :title, type: :text, analyzer: :english
+      indexes :short_description, type: :text, analyzer: :english
+    end
+  end
 
   def all_tags
     tags.map(&:name).join(', ')
